@@ -1,0 +1,10 @@
+div{
+    width: 100%;
+    background-image: url(../assets/image/bg.jpg);
+    height: 500px;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
