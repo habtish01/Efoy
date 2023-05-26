@@ -1,0 +1,37 @@
+<section class="container">
+    <div class="rounded p-4 new1">
+          <h2 class="text-4 mb-3" style="color: black">Book Bus Tickets</h2>
+          <form id="bookingBus">
+              <div class="row" style="justify-content: center;">
+                <mat-form-field appearance="outline" class="col-md-3">
+                  <mat-label>From</mat-label>
+                  <mat-select>
+                    <mat-option *ngFor="let option of options" [value]="option">
+                      {{option}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-icon matSuffix>my_location</mat-icon>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="col-md-4">
+                  <mat-label>To</mat-label>
+                  <mat-select>
+                    <mat-option *ngFor="let option of options" [value]="option">
+                      {{option}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-icon matSuffix>pin_drop</mat-icon>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="col-md-4">
+                  <mat-label>Departure Date</mat-label>
+                  <input matInput [matDatepicker]="picker">
+                  <mat-hint>MM/DD/YYYY</mat-hint>
+                  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                <button class="col-md-2" mat-fab color="primary" (click)="busList()">
+                  <mat-icon>search</mat-icon>
+                </button> 
+              </div>
+          </form>
+        </div>
+</section>
