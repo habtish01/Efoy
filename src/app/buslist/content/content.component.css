@@ -1,0 +1,133 @@
+table {
+    border: 1px solid black;
+    padding: 0.5em;
+}
+
+td {
+    padding: 1em;
+    border: 2px solid gray;
+}
+
+td:hover {
+    cursor: default;
+    background-color: gray;
+}
+
+.active {
+    border: 2px solid rgb(91, 91, 91);
+    border-radius: 5px;
+}
+
+.booked {
+    background-color: lightgray;
+}
+
+.font14 {
+    font-size: 14px;
+}
+.font16 {
+    font-size: 16px;
+}
+.marginTop5 {
+    margin-top: 5px;
+}
+.marginTB10 {
+    margin: 10px 0px;
+}
+.wordWrap {
+    word-break: break-all;
+}
+/* End CSS Helpers */
+
+.innerContainer {
+    color: #fff;
+    text-align: center;
+}
+.movie {
+    margin: -10px -5px 10px -5px;
+    height: 70px;
+    background: hsla(216, 81%, 53%, 0.65);   
+}
+.movieDetails {
+    font-size: 15px;
+    margin-top: -3px;
+}
+.movieTitle {
+    font-size: 20px;
+    padding-top: 10px;
+    margin-top: -3px;
+}
+.seat {
+    padding-right: 5px;
+}
+
+.legend {
+    font-size: 14px;
+}
+.legend > .padding-left {
+    padding-left: 15px;
+}
+.screen {
+    background: hsla(216, 72%, 50%, 0.65);
+    height: 3px;
+    border-radius: 15px;
+    margin: -5px 50px 10px;
+    box-shadow: 0px 3px 6px #fff;
+}
+.reservedSeat {
+    background-color: #fe807c;
+    color: white;
+    width: 25px;
+    height: 25px;
+    margin-left: 5px;
+    cursor: not-allowed;
+}
+.selectedSeat {
+    background-color: #61ec61;
+    color: white;
+    width: 25px;
+    height: 25px;
+    margin-left: 5px;
+}
+.freeSeat {
+    color: rgb(76, 75, 75);
+    width: 25px;
+    height: 25px;
+    margin-left: 5px;
+    background-color: #e4e2e2;
+}
+
+.freeSeat:hover{
+    background-color: #66f366;
+    color: white;
+}
+
+.gnrl{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.general1{
+    display: flex;
+    flex-direction: row;
+    
+}
+.seat0{
+    margin-right: 35px;
+}
+.seat12{
+    display: flex;
+    flex-direction: column;
+}
+.seat1{
+    margin-bottom: 30px;
+}
+.xb{
+    background-color: #fe807c;
+    color: white;
+    width: 20px;
+    height: 20px;
+}
+

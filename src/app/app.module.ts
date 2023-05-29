@@ -25,7 +25,7 @@ import { RoutesComponent } from './home/routes/routes.component';
 import { AboutComponent } from './home/about/about.component';
 import { ContentComponent } from './buslist/content/content.component';
 import { HeadComponent } from './buslist/head/head.component';
-import { SeatComponent } from './buslist/seat/seat.component';
+
 import { MatDialogModule} from '@angular/material/dialog'
 
 @NgModule({
@@ -41,7 +41,6 @@ import { MatDialogModule} from '@angular/material/dialog'
     BuslistComponent,
     HeadComponent,
     ContentComponent,
-    SeatComponent,
   ],
   imports: [
     BrowserAnimationsModule,

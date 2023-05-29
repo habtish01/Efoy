@@ -171,16 +171,67 @@
                                     <div id="seat-map">
                                       <div class="front-indicator">Front</div>
                                     </div>
-                                    <div id="legend">sami</div>
+                                    <div class="legend">
+                                      <div class="gnrl">
+                                        <div class="general1">
+                                          <div class="seat0">
+                                            <div  *ngFor="let seat of seats">
+                                              <span class="seat" *ngFor="let col of seat" (click)="seatClicked(col)" 
+                                                      [ngSwitch]="getStatus(col)">
+                                                      <button *ngSwitchCase="'reserved'" mat-mini-fab  disabled class="mb-2 reservedSeat">{{col}}</button>
+                                                      <button *ngSwitchCase="'selected'" mat-mini-fab  class="mb-2 selectedSeat">{{col}}</button>
+                                                      <button *ngSwitchDefault mat-mini-fab color="basic" class="mb-2 freeSeat">{{col}}</button>
+                                              </span>
+                                            </div>
+                                          </div>
+                                          <div class="seat12">
+                                            <div class="seat1">
+                                              <div  *ngFor="let seat of seats1">
+                                                <span class="seat" *ngFor="let col of seat" (click)="seatClicked(col)" 
+                                                        [ngSwitch]="getStatus(col)">
+                                                        <button *ngSwitchCase="'reserved'" mat-mini-fab  disabled class="mb-2 reservedSeat">{{col}}</button>
+                                                        <button *ngSwitchCase="'selected'" mat-mini-fab  class="mb-2 selectedSeat">{{col}}</button>
+                                                        <button *ngSwitchDefault mat-mini-fab color="basic" class="mb-2 freeSeat">{{col}}</button>
+                                                </span>
+                                              </div>
+                                            </div>
+                                            <div class="seat2">
+                                              <div  *ngFor="let seat of seats2">
+                                                <span class="seat" *ngFor="let col of seat" (click)="seatClicked(col)" 
+                                                        [ngSwitch]="getStatus(col)">
+                                                        <button *ngSwitchCase="'reserved'" mat-mini-fab  disabled class="mb-2 reservedSeat">{{col}}</button>
+                                                        <button *ngSwitchCase="'selected'" mat-mini-fab  class="mb-2 selectedSeat">{{col}}</button>
+                                                        <button *ngSwitchDefault mat-mini-fab color="basic" class="mb-2 freeSeat">{{col}}</button>
+                                                </span>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="general2">
+                                          <div  *ngFor="let seat of seats3">
+                                            <span class="seat" *ngFor="let col of seat" (click)="seatClicked(col)" 
+                                                    [ngSwitch]="getStatus(col)">
+                                                    <button *ngSwitchCase="'reserved'" mat-mini-fab  disabled class="mb-2 reservedSeat">{{col}}</button>
+                                                    <button *ngSwitchCase="'selected'" mat-mini-fab  class="mb-2 selectedSeat">{{col}}</button>
+                                                    <button *ngSwitchDefault mat-mini-fab color="basic" class="mb-2 freeSeat">{{col}}</button>
+                                            </span>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      
+                                    </div>
+                                      
                                   </div>
                                   <div class="col-12 col-lg-6 mt-3 mt-lg-0">
                                     <div class="booking-details">
                                       <h2 class="text-5">Ticket Details</h2>
-                                      <p>Selected Seats (<span id="counter">0</span>):</p>
-                                      <ul id="selected-seats">
+                                      <p>Selected Seats (<span id="counter">{{selected.length}}</span>):</p>
+                                      <ul id="selected-seats" *ngIf="selected.length > 0">
+                                        <li *ngFor="let col of selected">Seat # {{col}}: {{ticketPrice}} Birr
+                                          <span><button mat-mini-fab class="xb" (click)="removeSelected(col)"><i class="bi bi-file-excel"></i></button></span></li>
                                       </ul>
-                                      <div class="d-flex bg-light-4 px-3 py-2 mb-3">Total : <span class="text-dark text-5 font-weight-600 ml-2"><span id="total">0</span></span></div>
-                                      <a href="booking-bus-confirm-details.html" class="btn btn-primary btn-block">Continue</a>
+                                      <div class="d-flex bg-light-4 px-3 py-2 mb-3">Total : <span class="text-dark text-5 font-weight-600 ml-2">{{ticketPrice*selected.length}} Birr</span></div>
+                                      <a class="btn btn-primary btn-block">Continue</a>
                                     </div>
                                   </div>
                                 </div>
@@ -230,148 +281,3 @@
                       </div>
                     </div>
                   </div><!-- Bus Details Modal Dialog end -->
-<script>
-$(function() {
- 'use strict';
-  // Depart Date
-  $('#busDepart').daterangepicker({
-	singleDatePicker: true,
-	minDate: moment(),
-	autoUpdateInput: false,
-	}, function(chosen_date) {
-  $('#busDepart').val(chosen_date.format('MM-DD-YYYY'));
-  });
-
-// Departure Time Slider Range (jQuery UI)
-	$("#slider-range-departure").slider({
-  range: true,
-  min: 0,
-  max: 1439,
-  values: [0, 1439],
-  slide: function(e, ui) {
-    $('.slider-time-departure').each(function(i) {
-      var hours = ("00" + Math.floor(ui.values[i] / 60)).slice(-2);
-      var mins = ("00" + (ui.values[i] - (hours * 60))).slice(-2);
-      $(this).html(hours + ':' + mins);
-    });
-  }
-});
-
-// Slider Range (jQuery UI)
-    $( "#slider-range" ).slider({
-      range: true,
-      min: 125,
-      max: 1250,
-      values: [ 125, 1250 ],
-      slide: function( event, ui ) {
-        $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-      }
-    });
-    $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-      " - $" + $( "#slider-range" ).slider( "values", 1 ) );
- });
-	
-// Seat Charts
-	var firstSeatLabel = 1;
-	$(document).ready(function() {
-		  var $cart = $('#selected-seats'),
-			  $counter = $('#counter'),
-			  $total = $('#total'),
-			  sc = $('#seat-map').seatCharts({
-			  map: [
-				  'ff_ff',
-				  'ff_ff',
-				  'ee_ee',
-				  'ee_ee',
-				  'ee___',
-				  'ee_ee',
-				  'ee_ee',
-				  'ee_ee',
-				  'eeeee',
-			  ],
-			  seats: {
-				  f: {
-					  price   : 250,
-					  classes : 'economy-class', //your custom CSS class
-					  category: ''
-				  },
-				  e: {
-					  price   : 240,
-					  classes : 'economy-class', //your custom CSS class
-					  category: ''
-				  }					
-			  
-			  },
-			  naming : {
-				  top : false,
-				  getLabel : function (character, row, column) {
-					  return firstSeatLabel++;
-				  },
-			  },
-			  legend : {
-				  node : $('#legend'),
-				  items : [
-					  // [ 'f', 'available',   'First Class' ],
-					  [ 'e', 'available',   'Available Seats'],
-					  [ 'f', 'unavailable', 'Already Booked']
-				  ]					
-			  },
-			  click: function () {
-				  if (this.status() == 'available') {
-					  //let's create a new <li> which we'll add to the cart items
-					  $('<li>'+this.data().category+' Seat # '+this.settings.label+': <b>'+this.data().price+' Etb </b> <a href="#" class="cancel-cart-item text-danger text-4"><i class="fa fa-times-circle"></i></a></li>')
-						  .attr('id', 'cart-item-'+this.settings.id)
-						  .data('seatId', this.settings.id)
-						  .appendTo($cart);
-					  
-					  /*
-					   * Lets update the counter and total
-					   *
-					   * .find function will not find the current seat, because it will change its stauts only after return
-					   * 'selected'. This is why we have to add 1 to the length and the current seat price to the total.
-					   */
-					  $counter.text(sc.find('selected').length+1);
-					  $total.text(recalculateTotal(sc)+this.data().price);
-					  
-					  return 'selected';
-				  } else if (this.status() == 'selected') {
-					  //update the counter
-					  $counter.text(sc.find('selected').length-1);
-					  //and total
-					  $total.text(recalculateTotal(sc)-this.data().price);
-				  
-					  //remove the item from our cart
-					  $('#cart-item-'+this.settings.id).remove();
-				  
-					  //seat has been vacated
-					  return 'available';
-				  } else if (this.status() == 'unavailable') {
-					  //seat has been already booked
-					  return 'unavailable';
-				  } else {
-					  return this.style();
-				  }
-			  }
-		  });
-
-		  //this will handle "[cancel]" link clicks
-		  $('#selected-seats').on('click', '.cancel-cart-item', function () {
-			  //let's just trigger Click event on the appropriate seat, so we don't have to repeat the logic here
-			  sc.get($(this).parents('li:first').data('seatId')).click();
-		  });
-
-		  //let's pretend some seats have already been booked
-		  sc.get(['1_2', '4_1', '7_1', '7_2']).status('unavailable');
-  
-  });
-  function recalculateTotal(sc) {
-	  var total = 0;
-  
-	  //basically find every selected seat and sum its price
-	  sc.find('selected').each(function () {
-		  total += this.data().price;
-	  });
-	  
-	  return total;
-  }
-</script>
