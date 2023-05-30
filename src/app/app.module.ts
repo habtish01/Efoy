@@ -26,7 +26,8 @@ import { AboutComponent } from './home/about/about.component';
 import { ContentComponent } from './buslist/content/content.component';
 import { HeadComponent } from './buslist/head/head.component';
 
-import { MatDialogModule} from '@angular/material/dialog'
+import { MatDialogModule} from '@angular/material/dialog';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { MatDialogModule} from '@angular/material/dialog'
     MatCheckboxModule,
     MatExpansionModule,
     MatDialogModule,
+    MatProgressSpinnerModule
 
 
   ],

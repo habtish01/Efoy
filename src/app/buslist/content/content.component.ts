@@ -7,6 +7,10 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./content.component.css'],
 })
 export class ContentComponent {
+  resources= false;
+  constructor(){
+    this.resources=true;
+  }
   seats= [[1,2,],
           [5,6],
           [9,10],
