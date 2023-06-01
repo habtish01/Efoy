@@ -28,6 +28,7 @@ import { HeadComponent } from './buslist/head/head.component';
 
 import { MatDialogModule} from '@angular/material/dialog';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { DescribeComponent } from './home/describe/describe.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     BuslistComponent,
     HeadComponent,
     ContentComponent,
+    DescribeComponent,
   ],
   imports: [
     BrowserAnimationsModule,

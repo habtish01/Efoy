@@ -1,0 +1,67 @@
+.easier{
+    background-color: white;
+}
+div{
+    margin-bottom: 50px;
+    align-items: center;
+    justify-content: center;
+}
+
+i{
+    font-size: 50px;
+}
+
+img {
+    max-width: 100%;
+    margin: 10px;
+}
+
+h5 {
+    font-size: 2.5rem;
+    margin: 15px;
+    margin-top: 50px;
+    color: rgb(1, 50, 114);
+}
+
+.h6,h6 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 35px;
+    color: rgb(1, 50, 114);
+}
+
+p {
+    margin-bottom: 1rem;
+    margin-top: 0;
+    justify-content: center;
+    align-items: center;
+    line-height: 2.5rem;
+    font-size: 20px;
+}
+
+.main-heading{
+    margin-bottom: 40px;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+
+
+@media (max-width: 767px){
+.main-heading {
+    font-size: 1.7rem;
+    line-height: 1.75rem;
+}
+h5{
+    font-size: 1rem;
+}
+.line{
+    display: none;
+}
+}
+@media (max-width: 995px){
+    .line{
+        display: none;
+    }
+}
